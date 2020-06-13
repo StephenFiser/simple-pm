@@ -7,6 +7,8 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "sortablejs": "^1.10.2",
+    "stimulus": "^1.1.1",
+    "stimulus_reflex": "^3.2.2",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

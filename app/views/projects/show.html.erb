@@ -53,7 +53,12 @@
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <% Task::STATUS_OPTIONS.each do |status| %>
-                          <a class="dropdown-item" href="#"><%= status[0] %></a>
+                          <a class="dropdown-item" href="#"
+                          data-reflex="click->StatusReflex#change"
+                          data-id="<%= task.id %>"
+                          data-status="<%= status[1] %>">
+                            <%= status[0] %>
+                          </a>
                         <% end %>
                       </div>
                     </div>
