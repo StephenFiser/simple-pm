@@ -43,9 +43,9 @@
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="d-flex justify-content-between">
-                    <div class='task-status'>
+                    <div class='task-status mb-3'>
                       <i class="fas fa-grip-vertical grip text-secondary mr-1"></i>
-                      <span class="badge badge-<%= task.color_class %> mb-3"><%= task.status %></span>
+                      <%= render(ProgressBadgeComponent.new(status: task.status)) %>
                     </div>
                     <div>
                       <div class="dropdown float-left">
