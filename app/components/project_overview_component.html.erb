@@ -1,0 +1,16 @@
+<%= link_to project, class: 'text-decoration-none' do %>
+  <div class="card project-card mb-3">
+    <div class="card-body">
+      <div class="mb-3">
+        <%= render(ProgressBadgeComponent.new(status: status)) %>
+        <span class='text-secondary'>
+          <small>
+            <%= completion_stats %>
+          </small>
+        </span>
+      </div>
+      <h5 class='card-title text-dark'><b><%= name %></b></h5>
+      <p class='text-secondary'><%= description %></p>
+    </div>
+  </div>
+<% end %>

@@ -20,6 +20,17 @@ class Task < ApplicationRecord
     end
   end
 
+  def color_class
+    case status
+    when 'not-started'
+      'secondary'
+    when 'in-progress'
+      'info'
+    when 'complete'
+      'success'
+    end
+  end
+
   def complete?
     status == 'complete'
   end
