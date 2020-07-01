@@ -38,47 +38,7 @@
     <div data-controller="tasks">
       <ul id='tasks-list' data-action="drop->tasks#sort">
         <% @project.tasks.order(position: :asc).each do |task| %>
-          <% if task.persisted? %>
-            <li class='task-item' data-task-id="<%= task.id %>">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <div class='task-status mb-3'>
-                      <i class="fas fa-grip-vertical grip text-secondary mr-1"></i>
-                      <%= render(ProgressBadgeComponent.new(status: task.status)) %>
-                    </div>
-                    <div>
-                      <div class="dropdown float-left">
-                        <button class="btn btn-sm mr-1 btn-outline-<%= task.color_class %> dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <%= task.readable_status %>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <% Task::STATUS_OPTIONS.each do |status| %>
-                            <a class="dropdown-item" href="#"
-                            data-reflex="click->StatusReflex#change"
-                            data-id="<%= task.id %>"
-                            data-status="<%= status[1] %>">
-                              <%= status[0] %>
-                            </a>
-                          <% end %>
-                        </div>
-                      </div>
-                      <%= link_to edit_project_task_path(task.project, task), class: 'btn btn-light btn-sm' do %>
-                        <i class='far fa-edit'></i>
-                      <% end %>
-                      <%= link_to [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-sm' do %>
-                        <i class='fas fa-trash'></i>
-                      <% end%>
-                    </div>
-                  </div>
-                  <h5 class='card-title mb-2'>
-                    <span><%= task.name %></span>
-                  </h5>
-                  <p><%= task.description %></p>
-                </div>
-              </div>
-            </li>
-          <% end %>
+          <%= render(TaskComponent.new(task: task)) %>
         <% end %>
       </ul>
     </div>

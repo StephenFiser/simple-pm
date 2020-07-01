@@ -1,0 +1,25 @@
+<li class='task-item' data-task-id="<%= task.id %>">
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <div class='task-status mb-3'>
+          <i class="fas fa-grip-vertical grip text-secondary mr-1"></i>
+          <%= render(ProgressBadgeComponent.new(status: status)) %>
+        </div>
+        <div>
+          <%= render(StatusChangerComponent.new(task_id: task_id, status: status)) %>
+          <%= link_to edit_project_task_path(project, task), class: 'btn btn-light btn-sm' do %>
+            <i class='far fa-edit'></i>
+          <% end %>
+          <%= link_to [project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-sm' do %>
+            <i class='fas fa-trash'></i>
+          <% end%>
+        </div>
+      </div>
+      <h5 class='card-title mb-2'>
+        <span><%= name %></span>
+      </h5>
+      <p><%= description %></p>
+    </div>
+  </div>
+</li>

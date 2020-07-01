@@ -1,0 +1,15 @@
+<div class="dropdown float-left">
+  <button class="btn btn-sm mr-1 btn-outline-<%= color_class %> dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= readable_status %>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <% status_options.each do |status| %>
+      <a class="dropdown-item" href="#"
+      data-reflex="click->StatusReflex#change"
+      data-id="<%= task_id %>"
+      data-status="<%= status.slugged %>">
+        <%= status.readable %>
+      </a>
+    <% end %>
+  </div>
+</div>
