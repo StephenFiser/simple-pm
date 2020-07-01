@@ -1,4 +1,8 @@
 class TaskComponent < ViewComponent::Base
+  extend Forwardable
+
+  delegate [:id, :status, :project, :name, :description, :persisted?] => :@task
+
   attr_reader :task
 
   def initialize(task:)
@@ -6,11 +10,7 @@ class TaskComponent < ViewComponent::Base
   end
 
   def render?
-    task.persisted?
-  end
-
-  def status
-    task.status
+    persisted?
   end
 
   def color_class
@@ -25,19 +25,7 @@ class TaskComponent < ViewComponent::Base
   end
 
   def task_id
-    task.id
-  end
-
-  def project
-    task.project
-  end
-
-  def name
-    task.name
-  end
-
-  def description
-    task.description
+    id
   end
 
 end
